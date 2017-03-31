@@ -49,10 +49,11 @@
     <Compile Include="DocumentPart.cs" />
     <Compile Include="DocumentPartVisitor.cs" />
     <Compile Include="DocumentToScreen.cs" />
+    <Compile Include="FuncList.cs" />
+    <Compile Include="FuncListExtensions.cs" />
     <Compile Include="ImageElement.cs" />
     <Compile Include="ImagePart.cs" />
     <Compile Include="Introduction.cs" />
-    <Compile Include="List.cs" />
     <Compile Include="Option.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
