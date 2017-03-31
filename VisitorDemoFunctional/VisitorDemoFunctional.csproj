@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0488479F-AAAA-41CD-BD3D-9EE126B4B621}</ProjectGuid>
+    <ProjectGuid>{A14D07A6-77F3-41F2-8919-3C2136D09E22}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>LoggingDemo</RootNamespace>
-    <AssemblyName>LoggingDemo</AssemblyName>
+    <RootNamespace>VisitorDemoFunctional</RootNamespace>
+    <AssemblyName>VisitorDemoFunctional</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -34,6 +34,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,21 +45,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandExecutor.cs" />
-    <Compile Include="CommandParser.cs" />
-    <Compile Include="Commands\CreateOrderCommand.cs" />
-    <Compile Include="Commands\ICommand.cs" />
-    <Compile Include="Commands\ICommandFactory.cs" />
-    <Compile Include="Commands\NotFoundCommand.cs" />
-    <Compile Include="Commands\ShipOrderCommand.cs" />
-    <Compile Include="Commands\UpdateOrderCommand.cs" />
+    <Compile Include="CountWordsVisitor.cs" />
+    <Compile Include="DocumentPart.cs" />
+    <Compile Include="DocumentPartVisitor.cs" />
+    <Compile Include="DocumentToScreen.cs" />
+    <Compile Include="ImageElement.cs" />
+    <Compile Include="ImagePart.cs" />
+    <Compile Include="Introduction.cs" />
+    <Compile Include="List.cs" />
+    <Compile Include="Option.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Program1.cs" />
-    <Compile Include="Program2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScreenElement.cs" />
+    <Compile Include="SplitPart.cs" />
+    <Compile Include="TextContent.cs" />
+    <Compile Include="TextElement.cs" />
+    <Compile Include="TextPart.cs" />
+    <Compile Include="TitledPart.cs" />
+    <Compile Include="TranslationState.cs" />
+    <Compile Include="TupleExtensions.cs" />
+    <Compile Include="XmlLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Cover.jpg" />
+    <Content Include="Document.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
