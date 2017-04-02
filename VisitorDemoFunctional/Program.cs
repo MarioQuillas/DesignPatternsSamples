@@ -34,7 +34,7 @@ namespace VisitorDemoFunctional
             var doc = XmlLoader.LoadDocument("..\\..\\document.xml");
             var screenParts =
                 doc.Accept(
-                    new DocumentToScreen(),
+                    new DocumentToScreenVisitor(),
                     new TranslationState {Rect = new RectangleF(0.0f, 0.0f, 520.0f, 630.0f)}
                 ).Result;
 

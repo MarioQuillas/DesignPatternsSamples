@@ -48,7 +48,7 @@
     <Compile Include="CountWordsVisitor.cs" />
     <Compile Include="DocumentPart.cs" />
     <Compile Include="DocumentPartVisitor.cs" />
-    <Compile Include="DocumentToScreen.cs" />
+    <Compile Include="DocumentToScreenVisitor.cs" />
     <Compile Include="FuncList.cs" />
     <Compile Include="FuncListExtensions.cs" />
     <Compile Include="ImageElement.cs" />
