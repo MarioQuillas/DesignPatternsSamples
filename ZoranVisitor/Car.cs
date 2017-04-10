@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using ZoranVisitor.Visitors;
 
 namespace ZoranVisitor
 {
-    class Car
+    class Car: ICar
     {
 
         private readonly string make;
@@ -20,18 +22,23 @@ namespace ZoranVisitor
 
         public CarRegistration Register()
         {
-            //return new CarRegistration(this.make.ToUpper(), this.model,
-            //                           this.engine.cylinderVolume,
-            //                           this.seats.Sum(seat => seat.capacity));
-            return null;
+            return new CarRegistrationBuilder(this).ProduceResult();
         }
 
-        public void Accept(ICarVisitor visitor)
+        public void Accept(Func<ICarVisitor> visitorFactory)
         {
-            this.engine.Accept(visitor);
+            ICarVisitor visitor = visitorFactory();
+            this.engine.Accept(() => visitor);
             foreach (Seat seat in this.seats)
-                seat.Accept(visitor);
+                seat.Accept(() => visitor);
             visitor.VisitCar(this.make, this.model);
+        }
+
+        public T Accept<T>(Func<ICarVisitor<T>> visitorFactory)
+        {
+            ICarVisitor<T> visitor = visitorFactory();
+            this.Accept(() => (ICarVisitor)visitor);
+            return visitor.ProduceResult();
         }
     }
 }

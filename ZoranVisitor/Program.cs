@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ZoranVisitor
 {
@@ -10,8 +11,8 @@ namespace ZoranVisitor
 
             IEnumerable<Car> cars = new CarRepository().GetAll();
 
-            CarsView view = new CarsView(cars);
-            view.Render();
+            foreach (Car car in cars)
+                Console.WriteLine(car.Register());
 
             Console.Write("Press ENTER to exit...");
             Console.ReadLine();

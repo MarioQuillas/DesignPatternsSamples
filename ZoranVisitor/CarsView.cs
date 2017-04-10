@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ZoranVisitor.Visitors;
 
 namespace ZoranVisitor
 {
@@ -16,9 +17,8 @@ namespace ZoranVisitor
         {
             foreach (Car car in this.cars)
             {
-                CarToStringVisitor converter = new CarToStringVisitor();
-                car.Accept(converter);
-                Console.WriteLine(converter.GetCarDescription());
+                string report = car.Accept(() => new CarToStringVisitor());
+                Console.WriteLine(report);
             }
         }
     }

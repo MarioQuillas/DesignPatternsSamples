@@ -1,6 +1,6 @@
-﻿namespace ZoranVisitor
+﻿namespace ZoranVisitor.Visitors
 {
-    class CarToStringVisitor: ICarVisitor
+    class CarToStringVisitor: ICarVisitor<string>
     {
         private string carDetails;
         private string engineDetails;
@@ -11,10 +11,11 @@
             this.carDetails = string.Format("{0} {1}", make, model);
         }
 
-        public void VisitEngine(float power, float cylinderVolume,
-                                float temperatureC)
+        public void VisitEngine(EngineStructure structure, EngineStatus status)
         {
-            this.engineDetails = string.Format("{0}cc {1}kW", cylinderVolume, power);
+            this.engineDetails =
+                string.Format("{0}cc {1}kW",
+                              structure.CylinderVolume, structure.Power);
         }
 
         public void VisitSeat(string name, int capacity)
@@ -22,7 +23,7 @@
             this.seatsCount += capacity;
         }
 
-        public string GetCarDescription()
+        public string ProduceResult()
         {
             return string.Format("{0} {1} {2} seat(s)",
                                  this.carDetails, this.engineDetails,

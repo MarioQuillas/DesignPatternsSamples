@@ -1,4 +1,4 @@
-﻿namespace ZoranVisitor
+﻿namespace ZoranVisitor.Visitors
 {
     interface ICarVisitor: ICarPartVisitor
     {
