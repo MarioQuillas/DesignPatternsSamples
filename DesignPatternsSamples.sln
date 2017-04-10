@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+VisualStudioVersion = 15.0.26403.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisitorDemo", "VisitorDemo\VisitorDemo.csproj", "{E2C32F04-F145-4CAC-8544-A997E3D1ACCA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingDemo", "LoggingDemo\LoggingDemo.csproj", "{0488479F-AAAA-41CD-BD3D-9EE126B4B621}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisitorDemoFunctional", "VisitorDemoFunctional\VisitorDemoFunctional.csproj", "{A14D07A6-77F3-41F2-8919-3C2136D09E22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZoranVisitor", "ZoranVisitor\ZoranVisitor.csproj", "{44E1629D-1B01-470C-8004-47C5E5BFA84D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{A14D07A6-77F3-41F2-8919-3C2136D09E22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A14D07A6-77F3-41F2-8919-3C2136D09E22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A14D07A6-77F3-41F2-8919-3C2136D09E22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44E1629D-1B01-470C-8004-47C5E5BFA84D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44E1629D-1B01-470C-8004-47C5E5BFA84D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44E1629D-1B01-470C-8004-47C5E5BFA84D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44E1629D-1B01-470C-8004-47C5E5BFA84D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
