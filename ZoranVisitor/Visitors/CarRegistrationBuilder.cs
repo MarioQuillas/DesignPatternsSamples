@@ -1,6 +1,4 @@
-﻿using ZoranVisitor.Visitors;
-
-namespace ZoranVisitor
+﻿namespace ZoranVisitor.Visitors
 {
     class CarRegistrationBuilder : ICarVisitor<CarRegistration>
     {
