@@ -18,10 +18,8 @@ namespace LoggingDemo
             var requestedCommandName = args[0];
 
             var command = FindRequestedCommand(requestedCommandName);
-            if (null == command)
-                return new NotFoundCommand {Name = requestedCommandName};
 
-            return command.MakeCommand(args);
+            return null == command ? new NotFoundCommand {Name = requestedCommandName} : command.MakeCommand(args);
         }
 
         ICommandFactory FindRequestedCommand(string commandName)

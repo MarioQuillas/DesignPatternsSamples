@@ -54,6 +54,7 @@
     <Compile Include="ImageElement.cs" />
     <Compile Include="ImagePart.cs" />
     <Compile Include="Introduction.cs" />
+    <Compile Include="IVisited.cs" />
     <Compile Include="Option.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
