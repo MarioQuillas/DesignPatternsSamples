@@ -1,14 +1,14 @@
 ﻿namespace ZoranVisitor
 {
-    class EngineStructure
+    internal class EngineStructure
     {
-        public float Power { get; private set; }
-        public float CylinderVolume { get; private set; }
-
         public EngineStructure(float power, float cylinderVolume)
         {
-            this.Power = power;
-            this.CylinderVolume = cylinderVolume;
+            Power = power;
+            CylinderVolume = cylinderVolume;
         }
+
+        public float Power { get; }
+        public float CylinderVolume { get; }
     }
 }

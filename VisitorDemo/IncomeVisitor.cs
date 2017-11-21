@@ -11,7 +11,7 @@
 
         public void Visit(BankAccount bankAccount)
         {
-            Amount += bankAccount.Amount*bankAccount.MonthlyInterest;
+            Amount += bankAccount.Amount * bankAccount.MonthlyInterest;
         }
 
         public void Visit(Loan loan)

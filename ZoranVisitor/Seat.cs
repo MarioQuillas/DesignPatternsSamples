@@ -4,11 +4,11 @@ using ZoranVisitor.Visitors;
 
 namespace ZoranVisitor
 {
-    class Seat
+    internal class Seat
     {
+        private readonly int capacity;
 
-        private string name;
-        private int capacity;
+        private readonly string name;
 
         public Seat(string name, int capacity)
         {
@@ -16,34 +16,22 @@ namespace ZoranVisitor
             this.capacity = capacity;
         }
 
+        public static IEnumerable<Seat> FourSeatConfiguration => new[]
+        {
+            new Seat("Driver", 1),
+            new Seat("Passenger", 1),
+            new Seat("Rear bench", 2)
+        };
+
+        public static IEnumerable<Seat> TwoSeatConfiguration => new[]
+        {
+            new Seat("Driver", 1),
+            new Seat("Passenger", 1)
+        };
+
         public void Accept(Func<ICarPartVisitor> visitorFactory)
         {
-            visitorFactory().VisitSeat(this.name, this.capacity);
-        }
-
-        public static IEnumerable<Seat> FourSeatConfiguration
-        {
-            get
-            {
-                return new Seat[]
-                {
-                    new Seat("Driver", 1),
-                    new Seat("Passenger", 1),
-                    new Seat("Rear bench", 2)
-                };
-            }
-        }
-
-        public static IEnumerable<Seat> TwoSeatConfiguration
-        {
-            get
-            {
-                return new Seat[]
-                {
-                    new Seat("Driver", 1),
-                    new Seat("Passenger", 1)
-                };
-            }
+            visitorFactory().VisitSeat(name, capacity);
         }
     }
 }

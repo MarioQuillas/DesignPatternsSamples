@@ -16,8 +16,8 @@ namespace LoggingDemo.Commands
             Console.WriteLine("LOG: Updated order quantity from {0} to {1}", oldQuantity, NewQuantity);
         }
 
-        public string CommandName { get { return "UpdateQuantity"; } }
-        public string Description { get { return "UpdateQuantity number"; } }
+        public string CommandName => "UpdateQuantity";
+        public string Description => "UpdateQuantity number";
 
         public ICommand MakeCommand(string[] arguments)
         {

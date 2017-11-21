@@ -4,9 +4,9 @@ using ZoranVisitor.Visitors;
 
 namespace ZoranVisitor
 {
-    class CarsView
+    internal class CarsView
     {
-        private IEnumerable<Car> cars;
+        private readonly IEnumerable<Car> cars;
 
         public CarsView(IEnumerable<Car> cars)
         {
@@ -15,9 +15,9 @@ namespace ZoranVisitor
 
         public void Render()
         {
-            foreach (Car car in this.cars)
+            foreach (var car in cars)
             {
-                string report = car.Accept(() => new CarToStringVisitor());
+                var report = car.Accept(() => new CarToStringVisitor());
                 Console.WriteLine(report);
             }
         }

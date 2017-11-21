@@ -6,7 +6,7 @@ namespace LoggingDemo
 {
     public class CommandParser
     {
-        readonly IEnumerable<ICommandFactory> availableCommands;
+        private readonly IEnumerable<ICommandFactory> availableCommands;
 
         public CommandParser(IEnumerable<ICommandFactory> availableCommands)
         {
@@ -22,7 +22,7 @@ namespace LoggingDemo
             return null == command ? new NotFoundCommand {Name = requestedCommandName} : command.MakeCommand(args);
         }
 
-        ICommandFactory FindRequestedCommand(string commandName)
+        private ICommandFactory FindRequestedCommand(string commandName)
         {
             return availableCommands
                 .FirstOrDefault(cmd => cmd.CommandName == commandName);

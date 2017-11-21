@@ -5,7 +5,7 @@ namespace VisitorDemoFunctional
     public static class TupleExtensions
     {
         /// <summary>
-        /// Returns a tuple with the first element set to the specified value.
+        ///     Returns a tuple with the first element set to the specified value.
         /// </summary>
         /// <param name="nsnd">A new value for the first element</param>
         /// <returns>A new tuple with modified first element</returns>
@@ -15,7 +15,7 @@ namespace VisitorDemoFunctional
         }
 
         /// <summary>
-        /// Returns a tuple with the second element set to the specified value.
+        ///     Returns a tuple with the second element set to the specified value.
         /// </summary>
         /// <param name="nsnd">A new value for the second element</param>
         /// <returns>A new tuple with modified second element</returns>
@@ -25,9 +25,9 @@ namespace VisitorDemoFunctional
         }
 
         /// <summary>
-        /// Applies given function to the first element of the tuple 
-        /// and returns a tuple containing new value as the first element and 
-        /// the unchanged second element
+        ///     Applies given function to the first element of the tuple
+        ///     and returns a tuple containing new value as the first element and
+        ///     the unchanged second element
         /// </summary>
         public static Tuple<B, C> MapFirst<A, B, C>(this Tuple<A, C> t, Func<A, B> f)
         {
@@ -35,9 +35,9 @@ namespace VisitorDemoFunctional
         }
 
         /// <summary>
-        /// Applies given function to the second element of the tuple 
-        /// and returns a tuple containing new value as the second element and 
-        /// the unchanged first element
+        ///     Applies given function to the second element of the tuple
+        ///     and returns a tuple containing new value as the second element and
+        ///     the unchanged first element
         /// </summary>
         public static Tuple<C, B> MapSecond<A, B, C>(this Tuple<C, A> t, Func<A, B> f)
         {

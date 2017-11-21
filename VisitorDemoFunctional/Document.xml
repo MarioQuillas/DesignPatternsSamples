@@ -1,11 +1,12 @@
 <titled title="Functional Programming for the Real World" font="Cambria" size="18" style="bold">
   <split orientation="vertical">
-      <split orientation="horizontal">
-        <text style="italic">
+    <split orientation="horizontal">
+      <text style="italic">
 
-In this book, we'll introduce you to the essential concepts of functional programming, but thanks to the .NET Framework, we won't be limited to theoretical examples. We'll use many of the rich .NET libraries to show how functional programming can be used in the real world.</text>
-        <image filename="..\..\Cover.jpg" />
-      </split>
+        In this book, we'll introduce you to the essential concepts of functional programming, but thanks to the .NET Framework, we won't be limited to theoretical examples. We'll use many of the rich .NET libraries to show how functional programming can be used in the real world.
+      </text>
+      <image filename="..\..\Cover.jpg" />
+    </split>
     <titled title="Introduction" font="Times New Roman" size="14" style="bold">
       <split orientation="horizontal">
         <text>Functional programming is a paradigm that is older than the first computers. The first functional programming language celebrated its 50 years in 2008, but for all those years, it existed mostly in academia. Functional languages are very succinct and expressible, yet everything is achieved using a minimal number of concepts.  Despite their elegance, functional languages were never really used in mainstream.</text>

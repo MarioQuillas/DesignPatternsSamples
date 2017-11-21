@@ -3,13 +3,12 @@ using ZoranVisitor.Visitors;
 
 namespace ZoranVisitor
 {
-    class Engine
+    internal class Engine
     {
-
-        private float power;
-        private float cylinderVolume;
-
         private const float WorkingTemperatureC = 90.0F;
+        private readonly float cylinderVolume;
+
+        private readonly float power;
         private float temperatureC = 20.0F;
 
         public Engine(float power, float cylinderVolume)
@@ -20,40 +19,35 @@ namespace ZoranVisitor
 
         public void Accept(Func<ICarPartVisitor> visitorFactory)
         {
-            EngineStructure structure = new EngineStructure(this.power, this.cylinderVolume);
-            EngineStatus status = new EngineStatus(this.temperatureC, 0);
+            var structure = new EngineStructure(power, cylinderVolume);
+            var status = new EngineStatus(temperatureC, 0);
             visitorFactory().VisitEngine(structure, status);
         }
 
         public void Run(TimeSpan time)
         {
-            
-            TimeSpan heatingTime = GetHeatingTime();
+            var heatingTime = GetHeatingTime();
 
             if (time > heatingTime)
             {
-                this.temperatureC = WorkingTemperatureC;
+                temperatureC = WorkingTemperatureC;
             }
             else
             {
-                double temperatureDelta = WorkingTemperatureC - this.temperatureC;
-                double timeRatio = time.TotalMinutes / heatingTime.TotalMinutes;
-                this.temperatureC += (float)(temperatureDelta * timeRatio);
+                double temperatureDelta = WorkingTemperatureC - temperatureC;
+                var timeRatio = time.TotalMinutes / heatingTime.TotalMinutes;
+                temperatureC += (float) (temperatureDelta * timeRatio);
             }
-
         }
 
         private TimeSpan GetHeatingTime()
         {
+            var meanPower = 180.0;
+            var nominalHeatingTimeSec = 300.0;
 
-            double meanPower = 180.0;
-            double nominalHeatingTimeSec = 300.0;
-
-            int seconds = (int)(nominalHeatingTimeSec * meanPower / this.power);
+            var seconds = (int) (nominalHeatingTimeSec * meanPower / power);
 
             return new TimeSpan(0, 0, seconds);
-
         }
-
     }
 }

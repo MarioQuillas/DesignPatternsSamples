@@ -33,7 +33,12 @@ namespace LoggingDemo
             Console.WriteLine("LOG: Updated order quantity from {0} to {1}", oldQuantity, newQuantity);
         }
 
-        void CreateOrder() {}
-        void ShipOrder() {}
+        private void CreateOrder()
+        {
+        }
+
+        private void ShipOrder()
+        {
+        }
     }
 }

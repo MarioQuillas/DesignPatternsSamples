@@ -1,12 +1,11 @@
 ﻿namespace ZoranVisitor.Visitors
 {
-    class CarRegistrationBuilder : ICarVisitor<CarRegistration>
+    internal class CarRegistrationBuilder : ICarVisitor<CarRegistration>
     {
-
-        private ICar car;
+        private readonly ICar car;
+        private float engineCapacity;
         private string make;
         private string model;
-        private float engineCapacity;
         private int seatsCount;
 
         public CarRegistrationBuilder(ICar car)
@@ -22,21 +21,20 @@
 
         public void VisitEngine(EngineStructure structure, EngineStatus status)
         {
-            this.engineCapacity = structure.CylinderVolume;
+            engineCapacity = structure.CylinderVolume;
         }
 
         public void VisitSeat(string name, int capacity)
         {
-            this.seatsCount += capacity;
+            seatsCount += capacity;
         }
 
         public CarRegistration ProduceResult()
         {
-            this.car.Accept(() => (ICarVisitor)this);
-            return new CarRegistration(this.make.ToUpper(), this.model,
-                                       this.engineCapacity,
-                                       this.seatsCount);
+            car.Accept(() => (ICarVisitor) this);
+            return new CarRegistration(make.ToUpper(), model,
+                engineCapacity,
+                seatsCount);
         }
-
     }
 }

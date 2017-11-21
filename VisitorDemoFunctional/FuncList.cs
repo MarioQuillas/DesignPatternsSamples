@@ -1,15 +1,16 @@
+using System.Collections;
 using System.Collections.Generic;
 
 namespace VisitorDemoFunctional
 {
     /// <summary>
-    /// Represents a functional list that can be eihter 
-    /// 'empty list' or a 'cons cell'
+    ///     Represents a functional list that can be eihter
+    ///     'empty list' or a 'cons cell'
     /// </summary>
     public class FuncList<T> : IEnumerable<T>
     {
         /// <summary>
-        /// Constructor that creates an empty list
+        ///     Constructor that creates an empty list
         /// </summary>
         public FuncList()
         {
@@ -17,8 +18,8 @@ namespace VisitorDemoFunctional
         }
 
         /// <summary>
-        /// Constructor that creates a cons cell with an element 
-        /// (head) and a reference to the rest of the list (tail)
+        ///     Constructor that creates a cons cell with an element
+        ///     (head) and a reference to the rest of the list (tail)
         /// </summary>
         /// <param name="head">The elemnet stored by the cons cell</param>
         /// <param name="tail">Reference to the rest of the list</param>
@@ -30,31 +31,28 @@ namespace VisitorDemoFunctional
         }
 
         /// <summary>
-        /// Is the list empty list or a cons cell?
+        ///     Is the list empty list or a cons cell?
         /// </summary>
-        public bool IsEmpty { get; private set; }
+        public bool IsEmpty { get; }
 
         /// <summary>
-        /// Returns the element stored in the cons cell
+        ///     Returns the element stored in the cons cell
         /// </summary>
-        public T Head { get; private set; }
+        public T Head { get; }
 
         /// <summary>
-        /// Returns reference to the rest of the list when the list is a cons cell
+        ///     Returns reference to the rest of the list when the list is a cons cell
         /// </summary>
-        public FuncList<T> Tail { get; private set; }
+        public FuncList<T> Tail { get; }
 
-        public int Count
-        {
-            get { return IsEmpty ? 0 : (Tail.Count + 1); }
-        }
+        public int Count => IsEmpty ? 0 : Tail.Count + 1;
 
 
         // Added
 
         public IEnumerator<T> GetEnumerator()
         {
-            FuncList<T> el = this;
+            var el = this;
             while (!el.IsEmpty)
             {
                 yield return el.Head;
@@ -62,7 +60,7 @@ namespace VisitorDemoFunctional
             }
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
         }

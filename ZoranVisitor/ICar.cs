@@ -3,7 +3,7 @@ using ZoranVisitor.Visitors;
 
 namespace ZoranVisitor
 {
-    interface ICar
+    internal interface ICar
     {
         CarRegistration Register();
         void Accept(Func<ICarVisitor> visitorFactory);

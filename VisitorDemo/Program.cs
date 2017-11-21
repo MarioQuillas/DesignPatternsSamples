@@ -1,19 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace VisitorDemo
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var person = new Person();
-            person.Assets.Add(new BankAccount { Amount = 1000, MonthlyInterest = 0.01 });
-            person.Assets.Add(new BankAccount { Amount = 2000, MonthlyInterest = 0.02 });
-            person.Assets.Add(new RealEstate { EstimatedValue = 79000, MonthlyRent = 500 });
-            person.Assets.Add(new Loan { Owed = 40000, MonthlyPayment = 40 });
+            person.Assets.Add(new BankAccount {Amount = 1000, MonthlyInterest = 0.01});
+            person.Assets.Add(new BankAccount {Amount = 2000, MonthlyInterest = 0.02});
+            person.Assets.Add(new RealEstate {EstimatedValue = 79000, MonthlyRent = 500});
+            person.Assets.Add(new Loan {Owed = 40000, MonthlyPayment = 40});
 
             var netWorthVisitor = new NetWorthVisitor();
             var incomeVisitor = new IncomeVisitor();

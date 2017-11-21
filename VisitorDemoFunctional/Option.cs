@@ -17,42 +17,37 @@ namespace VisitorDemoFunctional
     // Listing 5.9 Generic option type using classes (C#)
 
     /// <summary>
-    /// Enumeration with possible alternatives of the Option type
+    ///     Enumeration with possible alternatives of the Option type
     /// </summary>
     public enum OptionType
     {
         Some,
         None
-    };
+    }
 
     /// <summary>
-    /// Represents option value that can be either 'None' or 'Some(v)'
+    ///     Represents option value that can be either 'None' or 'Some(v)'
     /// </summary>
     public abstract class Option<T>
     {
-        private OptionType tag;
-
         /// <summary>
-        /// Creates the option type and takes the type of the 
-        /// created option as an argument.
+        ///     Creates the option type and takes the type of the
+        ///     created option as an argument.
         /// </summary>
         protected Option(OptionType tag)
         {
-            this.tag = tag;
+            Tag = tag;
         }
 
         /// <summary>
-        /// Specifies alternative represented by this instance
+        ///     Specifies alternative represented by this instance
         /// </summary>
-        public OptionType Tag
-        {
-            get { return tag; }
-        }
+        public OptionType Tag { get; }
 
         // Listing 5.10 "Pattern matching" methods for Option class (C#)
 
         /// <summary>
-        /// Matches 'None' alternative
+        ///     Matches 'None' alternative
         /// </summary>
         /// <returns>Returns true when succeeds</returns>
         public bool MatchNone()
@@ -61,7 +56,7 @@ namespace VisitorDemoFunctional
         }
 
         /// <summary>
-        /// Matches 'Some' alternative
+        ///     Matches 'Some' alternative
         /// </summary>
         /// <param name="value">When succeeds sets this parameter to the carried value</param>
         /// <returns>Returns true when succeeds</returns>
@@ -74,7 +69,7 @@ namespace VisitorDemoFunctional
     }
 
     /// <summary>
-    /// Inherited class representing empty option
+    ///     Inherited class representing empty option
     /// </summary>
     public class None<T> : Option<T>
     {
@@ -85,7 +80,7 @@ namespace VisitorDemoFunctional
     }
 
     /// <summary>
-    /// Inherited class representing option with value
+    ///     Inherited class representing option with value
     /// </summary>
     public class Some<T> : Option<T>
     {
@@ -96,18 +91,18 @@ namespace VisitorDemoFunctional
         }
 
         /// <summary>
-        /// Returns value carried by the option
+        ///     Returns value carried by the option
         /// </summary>
-        public T Value { get; private set; }
+        public T Value { get; }
     }
 
     /// <summary>
-    /// Utility class for creating options
+    ///     Utility class for creating options
     /// </summary>
     public static class Option
     {
         /// <summary>
-        /// Creates an empty option
+        ///     Creates an empty option
         /// </summary>
         public static Option<T> None<T>()
         {
@@ -115,8 +110,8 @@ namespace VisitorDemoFunctional
         }
 
         /// <summary>
-        /// Creates option with a value. This method can be
-        /// used without type parameters thanks to C# type inference
+        ///     Creates option with a value. This method can be
+        ///     used without type parameters thanks to C# type inference
         /// </summary>
         public static Option<T> Some<T>(T value)
         {
@@ -130,34 +125,32 @@ namespace VisitorDemoFunctional
     // Listing 6.12: Implementing bind and map
 
     /// <summary>
-    /// Contains utility methods for working with option values
+    ///     Contains utility methods for working with option values
     /// </summary>
     public static class OptionUtils
     {
         /// <summary>
-        /// If the 'opt' argument contains a value, the function 'f' is called 
-        /// with this value as an argument and the result is returned.
+        ///     If the 'opt' argument contains a value, the function 'f' is called
+        ///     with this value as an argument and the result is returned.
         /// </summary>
         public static Option<R> Bind<T, R>(this Option<T> opt, Func<T, Option<R>> f)
         {
             T value1;
             if (opt.MatchSome(out value1))
                 return f(value1); // Just call the function
-            else
-                return Option.None<R>();
+            return Option.None<R>();
         }
 
         /// <summary>
-        /// If the 'opt' argument contains a value, the value is processed 
-        /// using 'f' function and is wrapend into a 'Some' constructor.
+        ///     If the 'opt' argument contains a value, the value is processed
+        ///     using 'f' function and is wrapend into a 'Some' constructor.
         /// </summary>
         public static Option<R> Map<T, R>(this Option<T> opt, Func<T, R> f)
         {
             T value1;
             if (opt.MatchSome(out value1))
                 return Option.Some(f(value1)); // Call the function & wrap the result
-            else
-                return Option.None<R>();
+            return Option.None<R>();
         }
     }
 }

@@ -22,14 +22,14 @@ namespace LoggingDemo
             command.Execute();
         }
 
-        static IEnumerable<ICommandFactory> GetAvailableCommands()
+        private static IEnumerable<ICommandFactory> GetAvailableCommands()
         {
             return new ICommandFactory[]
-                {
-                    new CreateOrderCommand(),
-                    new UpdateQuantityCommand(),
-                    new ShipOrderCommand(),
-                };
+            {
+                new CreateOrderCommand(),
+                new UpdateQuantityCommand(),
+                new ShipOrderCommand()
+            };
         }
 
         private static void PrintUsage(IEnumerable<ICommandFactory> availableCommands)

@@ -1,14 +1,14 @@
 ﻿namespace ZoranVisitor
 {
-    class CarRegistration
+    internal class CarRegistration
     {
+        private readonly float capacity;
         private readonly string make;
         private readonly string model;
-        private readonly float capacity;
-        private int maxPassengers;
+        private readonly int maxPassengers;
 
         public CarRegistration(string make, string model, float capacity,
-                               int maxPassengers)
+            int maxPassengers)
         {
             this.make = make;
             this.model = model;
@@ -19,8 +19,8 @@
         public override string ToString()
         {
             return string.Format("{0} {1} {2}cc {3} passengers",
-                                 this.make, this.model, this.capacity,
-                                 this.maxPassengers);
+                make, model, capacity,
+                maxPassengers);
         }
     }
 }

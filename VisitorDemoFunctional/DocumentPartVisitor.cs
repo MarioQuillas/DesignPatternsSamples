@@ -1,6 +1,6 @@
 namespace VisitorDemoFunctional
 {
-    abstract class DocumentPartVisitor<T>
+    internal abstract class DocumentPartVisitor<T>
     {
         public abstract T VisitSplitPart(SplitPart part, T state);
         public abstract T VisitTitledPart(TitledPart part, T state);

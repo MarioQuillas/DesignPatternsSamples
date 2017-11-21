@@ -1,8 +1,6 @@
-﻿using ZoranVisitor;
-
-namespace ZoranVisitor.Visitors
+﻿namespace ZoranVisitor.Visitors
 {
-    interface ICarPartVisitor
+    internal interface ICarPartVisitor
     {
         void VisitEngine(EngineStructure structure, EngineStatus status);
         void VisitSeat(string name, int capacity);

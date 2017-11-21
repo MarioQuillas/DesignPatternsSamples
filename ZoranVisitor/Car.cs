@@ -4,12 +4,12 @@ using ZoranVisitor.Visitors;
 
 namespace ZoranVisitor
 {
-    class Car: ICar
+    internal class Car : ICar
     {
+        private readonly Engine engine;
 
         private readonly string make;
         private readonly string model;
-        private readonly Engine engine;
         private readonly IEnumerable<Seat> seats;
 
         public Car(string make, string model, Engine engine, IEnumerable<Seat> seats)
@@ -27,17 +27,17 @@ namespace ZoranVisitor
 
         public void Accept(Func<ICarVisitor> visitorFactory)
         {
-            ICarVisitor visitor = visitorFactory();
-            this.engine.Accept(() => visitor);
-            foreach (Seat seat in this.seats)
+            var visitor = visitorFactory();
+            engine.Accept(() => visitor);
+            foreach (var seat in seats)
                 seat.Accept(() => visitor);
-            visitor.VisitCar(this.make, this.model);
+            visitor.VisitCar(make, model);
         }
 
         public T Accept<T>(Func<ICarVisitor<T>> visitorFactory)
         {
-            ICarVisitor<T> visitor = visitorFactory();
-            this.Accept(() => (ICarVisitor)visitor);
+            var visitor = visitorFactory();
+            Accept(() => (ICarVisitor) visitor);
             return visitor.ProduceResult();
         }
     }

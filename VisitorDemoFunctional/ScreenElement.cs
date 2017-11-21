@@ -2,7 +2,7 @@
 
 namespace VisitorDemoFunctional
 {
-    abstract class ScreenElement
+    internal abstract class ScreenElement
     {
         public abstract void DrawPart(Graphics gr);
     }

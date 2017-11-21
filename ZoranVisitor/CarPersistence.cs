@@ -2,23 +2,21 @@
 
 namespace ZoranVisitor
 {
-    class CarPersistence
+    internal class CarPersistence
     {
         public int InsertCar(string make, string model)
         {
-
             Console.WriteLine("INSERT INTO CarShop.Car(Make, Model)");
             Console.WriteLine("VALUES ('{0}', '{1}');", make, model);
             Console.WriteLine("SELECT SCOPE_IDENTITY()");
 
-            int carId = new Random().Next(100);
-            
+            var carId = new Random().Next(100);
+
             Console.WriteLine();
             Console.WriteLine("CarId = {0}", carId);
             Console.WriteLine();
 
             return carId;
-
         }
 
         public void InsertEngine(int carId, float power, float cylinderVolume)

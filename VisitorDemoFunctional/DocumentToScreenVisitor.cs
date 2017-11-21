@@ -1,11 +1,9 @@
-﻿using System;
+﻿using System.Drawing;
 using System.Windows.Forms;
-using System.Drawing;
-using System.Xml.Linq;
 
 namespace VisitorDemoFunctional
 {
-    class DocumentToScreenVisitor : DocumentPartVisitor<TranslationState>
+    internal class DocumentToScreenVisitor : DocumentPartVisitor<TranslationState>
     {
         public override TranslationState VisitImagePart(ImagePart part, TranslationState ctx)
         {

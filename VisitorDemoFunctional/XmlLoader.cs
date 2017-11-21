@@ -6,7 +6,7 @@ using System.Xml.Linq;
 
 namespace VisitorDemoFunctional
 {
-    static class XmlLoader
+    internal static class XmlLoader
     {
         public static string Attribute(this XElement node, string name, string def)
         {
@@ -14,20 +14,20 @@ namespace VisitorDemoFunctional
             return attr != null ? attr.Value : def;
         }
 
-        static Font ParseFont(XElement node)
+        private static Font ParseFont(XElement node)
         {
             var styleStr = node.Attribute("style", "");
             var style = styleStr.Contains("bold") ? FontStyle.Bold : FontStyle.Regular;
-            style = styleStr.Contains("italic") ? (style | FontStyle.Italic) : style;
-            return new Font(node.Attribute("font", "Calibri"), Single.Parse(node.Attribute("size", "12")), style);
+            style = styleStr.Contains("italic") ? style | FontStyle.Italic : style;
+            return new Font(node.Attribute("font", "Calibri"), float.Parse(node.Attribute("size", "12")), style);
         }
 
-        static Orientation ParseOrientation(string orient)
+        private static Orientation ParseOrientation(string orient)
         {
-            return (orient == "horizontal") ? Orientation.Horizontal : Orientation.Vertical;
+            return orient == "horizontal" ? Orientation.Horizontal : Orientation.Vertical;
         }
 
-        static DocumentPart LoadPart(XElement node)
+        private static DocumentPart LoadPart(XElement node)
         {
             switch (node.Name.LocalName)
             {
@@ -35,7 +35,7 @@ namespace VisitorDemoFunctional
                     return new TitledPart(new TextContent(node.Attribute("title", ""), ParseFont(node)),
                         LoadPart(node.Elements().First()));
                 case "split":
-                    var nodes = node.Elements().Select((el) => LoadPart(el)).ToFuncList();
+                    var nodes = node.Elements().Select(el => LoadPart(el)).ToFuncList();
                     return new SplitPart(ParseOrientation(node.Attribute("orientation", "")), nodes);
                 case "text":
                     return new TextPart(new TextContent(node.Value, ParseFont(node)));

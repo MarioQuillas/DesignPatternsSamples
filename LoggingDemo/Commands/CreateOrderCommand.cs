@@ -9,15 +9,9 @@ namespace LoggingDemo.Commands
             throw new NotImplementedException();
         }
 
-        public string CommandName
-        {
-            get { return "CreateOrder"; }
-        }
+        public string CommandName => "CreateOrder";
 
-        public string Description
-        {
-            get { return CommandName; }
-        }
+        public string Description => CommandName;
 
         public ICommand MakeCommand(string[] arguments)
         {

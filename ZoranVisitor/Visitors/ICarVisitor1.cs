@@ -1,6 +1,6 @@
 ﻿namespace ZoranVisitor.Visitors
 {
-    interface ICarVisitor<T>: ICarVisitor
+    internal interface ICarVisitor<T> : ICarVisitor
     {
         T ProduceResult();
     }

@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Drawing;
-using System.Xml.Linq;
+using System.Windows.Forms;
 
 // --------------------------------------------------------------------------
 // Functional Programming in .NET - Chapter 7
@@ -14,9 +13,9 @@ using System.Xml.Linq;
 
 namespace VisitorDemoFunctional
 {
-    static class Program
+    internal static class Program
     {
-        static Bitmap DrawImage(int wid, int hgt, float space, Action<Graphics> f)
+        private static Bitmap DrawImage(int wid, int hgt, float space, Action<Graphics> f)
         {
             var bmp = new Bitmap(wid, hgt);
             var gr = Graphics.FromImage(bmp);
@@ -28,7 +27,7 @@ namespace VisitorDemoFunctional
         }
 
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             // Load document and convert it to flat representation (using visitor)
             var doc = XmlLoader.LoadDocument("..\\..\\document.xml");
@@ -39,17 +38,17 @@ namespace VisitorDemoFunctional
                 ).Result;
 
             // Show the main form with the document
-            var main = new Form()
+            var main = new Form
             {
                 Text = "Document",
                 ClientSize = new Size(570, 680)
             };
-            main.BackgroundImage = DrawImage(570, 680, 20.0f, (gr) =>
-                screenParts.Iter((part) => part.DrawPart(gr)));
+            main.BackgroundImage = DrawImage(570, 680, 20.0f, gr =>
+                screenParts.Iter(part => part.DrawPart(gr)));
 
             // Run the word-counting visitor and display the result
-            int count = doc.Accept(new CountWordsVisitor(), 0);
-            MessageBox.Show("Count of the words in the document:" + count.ToString());
+            var count = doc.Accept(new CountWordsVisitor(), 0);
+            MessageBox.Show("Count of the words in the document:" + count);
 
             Application.Run(main);
         }

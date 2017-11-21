@@ -3,7 +3,7 @@
     public class NetWorthVisitor : IVisitor
     {
         public int Total { get; set; }
-        
+
         public void Visit(RealEstate realEstate)
         {
             Total += realEstate.EstimatedValue;
